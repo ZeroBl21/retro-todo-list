@@ -1,6 +1,11 @@
 import './TodoItem.css'
 
-const TodoItem = (props: Omit<Todo, 'id'>) => {
+interface Props {
+  todo: Todo,
+  deleteTodo(todo: Todo["id"]): void
+}
+
+const TodoItem = (props: Props) => {
   return (
     <div
       className='nes-container is-rounded'
@@ -10,10 +15,10 @@ const TodoItem = (props: Omit<Todo, 'id'>) => {
         justifyContent: 'space-between',
       }}
     >
-      <div>{props.title}</div>
+      <div>{props.todo.title}</div>
       <div className="btn-group">
         <button className='btn'>🖉</button>
-        <button className='btn'>
+        <button className='btn' onClick={() => props.deleteTodo(props.todo.id)}>
           <i className='nes-icon close is-small' />
         </button>
       </div>

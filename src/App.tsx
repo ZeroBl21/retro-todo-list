@@ -2,7 +2,7 @@ import { useState } from 'react'
 import TodoForm from './componets/TodoForm/TodoForm'
 import TodoItem from './componets/TodoItem/TodoItem'
 
-import "./App.css"
+import './App.css'
 
 const initialProps: Todo[] = [
   { id: crypto.randomUUID(), title: 'Test', finished: false },
@@ -14,28 +14,28 @@ function App() {
   const [todos, setTodos] = useState<Todo[]>(initialProps)
 
   const addTodo = (todo: Todo) => {
-    if(!todo.title) return
+    if (!todo.title) return
 
     const newTodos = [todo, ...todos]
-    
+
     setTodos(newTodos)
   }
 
-  const deleteTodo = () => {}
+  const deleteTodo = (id: Todo['id']) => {
+    const newTodos = todos.filter((todo) => todo.id !== id)
+    setTodos(newTodos)
+  }
+
   const editTodo = () => {}
 
   return (
     <main className='app'>
       <h1 className='title is-centered'>NES to do list</h1>
-      <TodoForm addTodo={addTodo}/>
+      <TodoForm addTodo={addTodo} />
       <div>
         {todos &&
           todos.map((todo: Todo) => (
-            <TodoItem
-              key={todo.id}
-              title={todo.title}
-              finished={todo.finished}
-            />
+            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
           ))}
       </div>
     </main>
