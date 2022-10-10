@@ -1,0 +1,17 @@
+.btn {
+  border: none;
+  background: transparent
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  gap: 0.5rem
+}
+
+.btn-group > * {
+  margin: 0;
+  width: 25px;
+  height: 25px;
+}
