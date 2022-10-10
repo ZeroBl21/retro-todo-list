@@ -10,7 +10,7 @@ const TodoItem = (props: Omit<Todo, 'id'>) => {
         justifyContent: 'space-between',
       }}
     >
-      <p>{props.title}</p>
+      <div>{props.title}</div>
       <div className="btn-group">
         <button className='btn'>🖉</button>
         <button className='btn'>
