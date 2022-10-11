@@ -3,3 +3,5 @@ interface Todo {
   title: string
   finished?: boolean
 }
+
+type Filter = 'All' | 'Active' | 'Completed'
