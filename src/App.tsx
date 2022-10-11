@@ -21,8 +21,20 @@ function App() {
     setTodos(newTodos)
   }
 
+  const toggleTodo = (id: Todo['id']) => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        todo.finished = !todo.finished
+      }
+      return todo
+    })
+
+    setTodos(newTodos)
+  }
+
   const deleteTodo = (id: Todo['id']) => {
     const newTodos = todos.filter((todo) => todo.id !== id)
+
     setTodos(newTodos)
   }
 
@@ -32,10 +44,15 @@ function App() {
     <main className='app'>
       <h1 className='title is-centered'>NES to do list</h1>
       <TodoForm addTodo={addTodo} />
-      <div>
+      <div className='todo-container'>
         {todos &&
           todos.map((todo: Todo) => (
-            <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+            />
           ))}
       </div>
     </main>
