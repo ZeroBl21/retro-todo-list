@@ -12,13 +12,18 @@ const initialProps: Todo[] = [
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>(initialProps)
+  const [dataToEdit, setDataToEdit] = useState<Todo | null>(null)
 
   const addTodo = (todo: Todo) => {
     if (!todo.title) return
 
     const newTodos = [todo, ...todos]
-
     setTodos(newTodos)
+  }
+
+  const editTodo = (todo: Todo) => {
+    const newData = todos.map((el) => (el.id === todo.id ? todo : el))
+    setTodos(newData)
   }
 
   const toggleTodo = (id: Todo['id']) => {
@@ -38,12 +43,15 @@ function App() {
     setTodos(newTodos)
   }
 
-  const editTodo = () => {}
-
   return (
     <main className='app'>
       <h1 className='title is-centered'>NES to do list</h1>
-      <TodoForm addTodo={addTodo} />
+      <TodoForm
+        addTodo={addTodo}
+        editTodo={editTodo}
+        dataToEdit={dataToEdit}
+        setDataToEdit={setDataToEdit}
+      />
       <div className='todo-container'>
         {todos &&
           todos.map((todo: Todo) => (
@@ -52,6 +60,7 @@ function App() {
               todo={todo}
               toggleTodo={toggleTodo}
               deleteTodo={deleteTodo}
+              setDataToEdit={setDataToEdit}
             />
           ))}
       </div>
