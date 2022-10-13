@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import TodoForm from './componets/TodoForm/TodoForm'
-import TodoItem from './componets/TodoItem/TodoItem'
 import TodoFilter from './componets/TodoFilter/TodoFilter'
+import TodoList from './componets/TodoList/TodoList'
 
 import './App.css'
+
 import useTodos from './hooks/useTodos'
 
 function App() {
@@ -29,19 +30,12 @@ function App() {
         setDataToEdit={setDataToEdit}
       />
       <TodoFilter filter={filter} setFilter={setFilter} />
-      <section className='todo-container'>
-        {visibleTodos.length
-          ? visibleTodos.map((todo: Todo) => (
-              <TodoItem
-                key={todo.id}
-                todo={todo}
-                toggleTodo={toggleTodo}
-                deleteTodo={deleteTodo}
-                setDataToEdit={setDataToEdit}
-              />
-            ))
-          : ''}
-      </section>
+      <TodoList
+        visibleTodos={visibleTodos}
+        setDataToEdit={setDataToEdit}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />
     </main>
   )
 }

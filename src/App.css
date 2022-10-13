@@ -17,9 +17,3 @@ html {
   margin: 20px auto 0;
 }
 
-.todo-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
