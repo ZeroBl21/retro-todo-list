@@ -1,61 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import TodoForm from './componets/TodoForm/TodoForm'
 import TodoItem from './componets/TodoItem/TodoItem'
 import TodoFilter from './componets/TodoFilter/TodoFilter'
 
 import './App.css'
-
-const initialProps = (): Todo[] => {
-  const saved = localStorage.getItem('todos-storage')
-
-  if (typeof saved === 'string') {
-    const parse = JSON.parse(saved)
-
-    if (parse) return parse
-    else return []
-  }
-
-  return []
-}
+import useTodos from './hooks/useTodos'
 
 function App() {
-  const [todos, setTodos] = useState<Todo[]>(initialProps)
+  const { todos, addTodo, editTodo, deleteTodo, toggleTodo } = useTodos()
   const [dataToEdit, setDataToEdit] = useState<Todo | null>(null)
   const [filter, setFilter] = useState<Filter>('All')
-
-  useEffect(() => {
-    localStorage.setItem('todos-storage', JSON.stringify(todos))
-  }, [todos])
-
-
-  const addTodo = (todo: Todo) => {
-    if (!todo.title) return
-
-    const newTodos = [todo, ...todos]
-    setTodos(newTodos)
-  }
-
-  const editTodo = (todo: Todo) => {
-    const newData = todos.map((el) => (el.id === todo.id ? todo : el))
-    setTodos(newData)
-  }
-
-  const toggleTodo = (id: Todo['id']) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        todo.finished = !todo.finished
-      }
-      return todo
-    })
-
-    setTodos(newTodos)
-  }
-
-  const deleteTodo = (id: Todo['id']) => {
-    const newTodos = todos.filter((todo) => todo.id !== id)
-
-    setTodos(newTodos)
-  }
 
   let visibleTodos = todos
 
