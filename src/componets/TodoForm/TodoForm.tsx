@@ -73,6 +73,8 @@ const TodoForm = (props: Props) => {
           onChange={handleChange}
           id='dark_field'
           className='nes-input'
+          placeholder='Add a new task...'
+          autoFocus
         />
       </div>
       <button className='nes-btn is-primary'>
