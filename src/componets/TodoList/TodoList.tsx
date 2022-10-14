@@ -21,7 +21,9 @@ const TodoList = (props: Props) => {
               setDataToEdit={props.setDataToEdit}
             />
           ))
-        : ''}
+        : (
+        <p className='todo-empty'>Nothing Here...</p>
+        )}
     </section>
   )
 }
