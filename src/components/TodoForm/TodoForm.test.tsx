@@ -71,27 +71,4 @@ describe('<TodoForm/>', () => {
 
     expect(btn).toBeDefined()
   })
-
-  // it('should call addTodo method succesfully if input field has a text', () => {
-  //   render(
-  //     <TodoForm
-  //       addTodo={mockedAdd}
-  //       editTodo={emptyFnc}
-  //       setDataToEdit={emptyFnc}
-  //       dataToEdit={null}
-  //     />
-  //   )
-  //
-  //   const input: HTMLInputElement =
-  //     screen.getByPlaceholderText('Add a new task...')
-  //   const btn: HTMLButtonElement = screen.getByText(/Add Todo/i)
-  //
-  //   fireEvent.change(input, { target: { value: 'Testing String' } })
-  //   fireEvent.click(btn)
-  //
-  //   expect(mockedAdd).toHaveBeenCalledOnce()
-  //
-  //   expect(input).toHaveValue('')
-  //   expect(mockedAdd).toHaveBeenCalledWith({})
-  // })
 })
