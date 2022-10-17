@@ -19,6 +19,7 @@
 .todo {
   display: flex;
   justify-content: space-between;
+  word-break: break-word;
 }
 
 .todo > div {
