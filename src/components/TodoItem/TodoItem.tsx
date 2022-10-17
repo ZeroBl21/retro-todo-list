@@ -1,3 +1,4 @@
+import { PencilIcon } from '../SVG'
 import './TodoItem.css'
 
 interface Props {
@@ -18,7 +19,7 @@ const TodoItem = (props: Props) => {
       </div>
       <menu className='btn-group'>
         <button className='btn' onClick={() => props.setDataToEdit(props.todo)}>
-          🖉
+          <PencilIcon/>
         </button>
         <button className='btn' onClick={() => props.deleteTodo(props.todo.id)}>
           <i className='nes-icon close is-small' />
