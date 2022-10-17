@@ -1,11 +1,13 @@
 {
   "name": "todo",
+  "homepage": "https://zerobl21.github.io/retro-todo-list",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "deploy": "gh-pages -d dist",
     "preview": "vite preview",
     "test": "vitest"
   },
@@ -21,6 +23,7 @@
     "@types/react-dom": "^18.0.6",
     "@types/testing-library__jest-dom": "^5.14.5",
     "@vitejs/plugin-react": "^2.1.0",
+    "gh-pages": "^4.0.0",
     "jsdom": "^20.0.1",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
